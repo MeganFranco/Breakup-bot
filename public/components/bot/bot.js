@@ -16,12 +16,13 @@ app.controller("BotPageController", ["$scope", "ResponseService", function($scop
 
 app.service("ResponseService", ["$http", function($http){
     var self = this;
-    var baseUrl = "http://breakupbot.meganfranco";
+//    var baseUrl = "http://breakupbot.meganfranco";
     this.response = "Hey, I'm not going to be available for the forseeable future, so I think we should stop seeing each other."
     
     this.getResponse = function(input){
         console.log
-        return $http.post(baseUrl + "/api/responses/", {input: input})
+//        return $http.post(baseUrl + "/api/responses/", {input: input})
+        return $http.post("/api/responses/", {input: input})
             .then(function(response){
             console.log(response.data);
            return response.data
