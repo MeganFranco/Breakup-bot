@@ -16,7 +16,7 @@ app.controller("BotPageController", ["$scope", "ResponseService", function($scop
 
 app.service("ResponseService", ["$http", function($http){
     var self = this;
-    var baseUrl = "http://localhost:3000";
+    var baseUrl = "http://breakupbot.meganfranco.com/";
     this.response = "Hey, I'm not going to be available for the forseeable future, so I think we should stop seeing each other."
     
     this.getResponse = function(input){
