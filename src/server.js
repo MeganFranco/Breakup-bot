@@ -6,7 +6,7 @@ var cors = require("cors");
 var morgan = require("morgan");
 var config = require("./config");
 var path = require("path");
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3000;
 var expressJwt = require("express-jwt");
 
 var botRoutes = require("./routes/botRoutes")
