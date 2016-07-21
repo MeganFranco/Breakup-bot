@@ -15,35 +15,40 @@ app.use(cors());
 //get info//
 botRouter.route("/")
     .get(function (req, res) {
-        return req;
-        console.log("hello")
+        res.send("Hello world from the api!");
+        //    console.log("hello")
     })
     .post(function (req, res) {
-//    console.log("in put function, req= " + req.body.input)
+        //    console.log("in put function, req= " + req.body.input)
         var text = req.body.input;
         var response = botLogic.breakupBot(text);
         //    if(if reponse is a why reponse){
         //        mongo.wyarray.save
         //    }
-    console.log(response.response + " botRoutes line 28")
-//    console.log(typeof response + ": response")
-    //typeof response.why is undifined on this line... the if function is now running...
-//    console.log( typeof response.why + " botRoutes line 31")
+        console.log(response.response + " botRoutes line 28")
+            //    console.log(typeof response + ": response")
+            //typeof response.why is undifined on this line... the if function is now running...
+            //    console.log( typeof response.why + " botRoutes line 31")
 
-        if(response.why === true){
-//            console.log(typeof response.why)
+        if (response.why === true) {
+            //            console.log(typeof response.why)
             console.log(req.body)
-//            var query = {_id: 1};
+                //            var query = {_id: 1};
 
-            WhyResponse.findOneAndUpdate( {response:response.response, _id: 1, }, {upsert: true}, function(err, whyResponse){
+            WhyResponse.findOneAndUpdate({
+                response: response.response,
+                _id: 1,
+            }, {
+                upsert: true
+            }, function (err, whyResponse) {
                 console.log(whyResponse)
-                if(err)
+                if (err)
                     res.status(500).send(err);
-                    res.send(whyResponse);
+                res.send(whyResponse);
             })
 
         } else {
-                    res.send(response.response);
+            res.send(response.response);
         }
 
     })
