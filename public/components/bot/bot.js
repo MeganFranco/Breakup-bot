@@ -30,7 +30,7 @@ app.service("ResponseService", ["$http", function($http){
     }
     
     this.getData = function(){
-        return $http.get(baseUrl)
+        return $http.get()
             .then(function(response){
             return response.data
         })
